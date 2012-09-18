@@ -18,6 +18,12 @@
 
 # Django settings for linuxteamplanet project.
 
+from os import path
+
+# Full path of the project
+ROOT_PROJECT = path.dirname(os.path.realpath(__file__)) + '/..'
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -88,6 +94,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    ROOT_PROJECT + '/linuxteamplanet/static/'
 )
 
 # List of finder classes that know how to find static files in
