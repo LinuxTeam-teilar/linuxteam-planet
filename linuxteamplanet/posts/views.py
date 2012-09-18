@@ -15,4 +15,7 @@
 #  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 #  Boston, MA 02110-1301, USA.
 
-# Create your views here.
+from django.shortcuts import render_to_response
+
+def posts(resquest):
+    return render_to_response('post.html', {})
