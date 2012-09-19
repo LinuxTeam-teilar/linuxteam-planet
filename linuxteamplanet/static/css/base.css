@@ -18,7 +18,7 @@
 
 #header, #container {
     margin: auto;
-    width: 50%;
+    width: 65%;
     border-radius: 15px;
 }
 
@@ -32,9 +32,4 @@
 
 body {
     background-color: #F5F0F2;
-}
-
-ul
-{
-    list-style-type: none;
 }
