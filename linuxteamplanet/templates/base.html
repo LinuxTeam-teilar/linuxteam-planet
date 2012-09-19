@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="{% static "css/mycss.css" %}" />
+        {# <link rel="stylesheet" type="text/css" href="{% static "css/mycss.css" %}" /> #}
     </head>
     <body>
+    <img src="{% static "images/logo.png" %}" />
     {% block posts %}{% endblock %}
     </body>
 </html>

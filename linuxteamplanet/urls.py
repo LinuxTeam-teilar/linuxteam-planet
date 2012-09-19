@@ -22,10 +22,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'linuxteamplanet.views.home', name='home'),
-    # url(r'^linuxteamplanet/', include('linuxteamplanet.foo.urls')),
-
+    url(r'^$', 'linuxteamplanet.posts.views.home'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
