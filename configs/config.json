@@ -1,0 +1,36 @@
+{
+    "Configs": {
+        "posts_path": "",
+        "feeds": [
+                {
+                    "author": "Giorgos Tsiapaliokas (terietor)",
+                    "source": "terietor.gr/feed"
+                },
+
+                {
+                    "author": "Antonis Tsiapaliokas (kokeroulis)",
+                    "source": "kokeroulis.wordpress.com/feed"
+                },
+
+                {
+                    "author": "Alex P. Natsios (drakevr)",
+                    "source": "http://drakevr.gr/atom.xml"
+                },
+
+                {
+                    "author": "Dimitris Papapoulios (skiarxon)",
+                    "source": "http://skiarxon.wordpress.com/feed"
+                },
+
+                {
+                    "author": "George Bratsos (etern4l)",
+                    "source": "http://etern4l.wordpress.com/feed"
+                },
+
+                {
+                    "author": "Theo Chatzimichos (tampakrap)",
+                    "source": "http://blogs.gentoo.org/tampakrap/feed"
+                }
+        ]
+    }
+}
