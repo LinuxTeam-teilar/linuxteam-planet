@@ -40,13 +40,15 @@ class Feeds(object):
 
                 ok = True
 
-                date
-                if entry.published:
+                date = None
+
+                try:
                     date = entry.published
-                elif entry.updated:
-                    date = entry.updated
-                else:
-                    ok = False
+                except AttributeError:
+                    try:
+                        date = entry.updated
+                    except AttributeError:
+                        ok = False
 
                 if ok:
                     data = {
