@@ -2,6 +2,21 @@
 
 {% block posts %}
 
-    <p>test<p/>
+    {% for post in posts %}
+        <div id="container">
+            <p id="post_info">
+                {{ post.author }}
+                <br/>
+                {{ post.date }}
+            <p/>
+
+            <p id="post_content">
+                {{ post.title }}
+                {% autoescape off %}
+                    {{ post.content }}
+                {% endautoescape %}
+            <p/>
+        </div>
+    {% endfor %}
 
 {% endblock %}

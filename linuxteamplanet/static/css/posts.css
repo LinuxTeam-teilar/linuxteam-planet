@@ -1,0 +1,14 @@
+#container {
+    margin: auto;
+    width: 65%;
+    border-radius: 15px;
+    background-color: white;
+}
+
+#post_info, #post_content {
+    font-weight: bold;
+}
+
+#post_content {
+    font-size:30px;
+}
