@@ -18,6 +18,7 @@
 from os import path
 import json
 import logging
+import feedparser
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -27,10 +28,34 @@ class Feeds(object):
         with open(feedsConfigFile) as f:
             self.json = json.load(f)
 
-        self._getData()
+    @property
+    def elements(self):
+        list = []
+        blogs = self.json["Configs"]["feeds"]
+        for blog in blogs:
+            logger.debug(blog["source"])
+            logger.debug(blog["author"] + '\n' + '\n')
+            parser = feedparser.parse(blog["source"])
+            for entry in parser.entries:
 
-    def _getData(self):
-        elements = self.json["Configs"]["feeds"]
-        for element in elements:
-            logger.debug(element["source"])
-            logger.debug(element["author"] + '\n' + '\n')
+                ok = True
+
+                date
+                if entry.published:
+                    date = entry.published
+                elif entry.updated:
+                    date = entry.updated
+                else:
+                    ok = False
+
+                if ok:
+                    data = {
+                        "author": blog["author"],
+                        "title": entry.title,
+                        "link": entry.link,
+                        "content": entry.content,
+                        "date": date,
+                        "isInternalPost": False
+                    }
+                    list.append(data)
+        return list

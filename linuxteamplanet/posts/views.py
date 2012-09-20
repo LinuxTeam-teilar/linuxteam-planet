@@ -20,7 +20,9 @@ from posts import Posts
 
 def home(request):
     p = Posts()
-    return render_to_response('posts.html', {})
+    return render_to_response('posts.html', {
+            "posts": p.posts()
+            })
 
 def posts(resquest, post_id):
     return render_to_response('posts.html', {})

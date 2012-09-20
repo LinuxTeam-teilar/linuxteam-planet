@@ -21,3 +21,6 @@ from feeds.feeds import Feeds
 class Posts(object):
     def __init__(self):
         self.feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
+
+    def posts(self):
+        return self.feeds.elements
