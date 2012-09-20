@@ -20,5 +20,5 @@ from django.shortcuts import render_to_response
 def home(request):
     return render_to_response('posts.html', {})
 
-def posts_id(resquest, post_id):
+def posts(resquest, post_id):
     return render_to_response('posts.html', {})
