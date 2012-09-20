@@ -15,12 +15,9 @@
 #  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 #  Boston, MA 02110-1301, USA.
 
-from django.shortcuts import render_to_response
-from posts import Posts
+from os import path
+from feeds.feeds import Feeds
 
-def home(request):
-    p = Posts()
-    return render_to_response('posts.html', {})
-
-def posts(resquest, post_id):
-    return render_to_response('posts.html', {})
+class Posts(object):
+    def __init__(self):
+        self.feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
