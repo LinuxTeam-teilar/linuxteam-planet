@@ -4,12 +4,12 @@
         "feeds": [
                 {
                     "author": "Giorgos Tsiapaliokas (terietor)",
-                    "source": "terietor.gr/feed"
+                    "source": "http://terietor.gr/feed"
                 },
 
                 {
                     "author": "Antonis Tsiapaliokas (kokeroulis)",
-                    "source": "kokeroulis.wordpress.com/feed"
+                    "source": "http://kokeroulis.wordpress.com/feed"
                 },
 
                 {
