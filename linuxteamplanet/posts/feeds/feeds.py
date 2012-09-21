@@ -55,7 +55,7 @@ class Feeds(object):
                         "author": blog["author"],
                         "title": entry.title,
                         "link": entry.link,
-                        "content": entry.content,
+                        "content": entry.content[0]["value"],
                         "date": date,
                         "isInternalPost": False
                     }
