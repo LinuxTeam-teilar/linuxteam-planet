@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load markup %}
+
 {% block posts %}
 
     {% for post in posts %}
@@ -10,12 +12,19 @@
                 {{ post.date }}
             <p/>
 
-            <p id="post_content">
-                {{ post.title }}
-                {% autoescape off %}
-                    {{ post.content }}
-                {% endautoescape %}
-            <p/>
+            {% if post.isInternalPost%}
+                <span>
+                {{ post.content|markdown }}
+                <span/>
+            {% else %}
+                <p id="post_content">
+                    {{ post.title }}
+                    {% autoescape off %}
+                        {{ post.content }}
+                    {% endautoescape %}
+                <p/>
+            {% endif %}
+
         </div>
     {% endfor %}
 
