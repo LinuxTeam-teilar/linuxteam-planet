@@ -37,20 +37,15 @@ class MD(object):
             print filenames
             print root
             for filename in fnmatch.filter(filenames, '*.md'):
-                print "hello koker3"
-                print dirnames
-                print "new root"
-                print root
-                print "hello koker4"
                 l = root.split('_')
 
                 date = l[0]
                 post_id = l[1]
-                html = ''
-                f = open(path.join(root, filename))
-                html = f.read()
-                print html
-                print "html"
+                markdown_text = ''
+                with open(path.join(root, filename)) as f:
+                    markdown_text = f.read()
+
+                html = markdown.markdown(markdown_text)
                 data = {
                     "author": 'LinuxTeam Teilar',
                     "link": post_id,

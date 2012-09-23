@@ -25,6 +25,6 @@ class Posts(object):
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
 
     def posts(self):
-        l = self._feeds.elements
-        l.append(self._markdown.elements)
+        l = self._markdown.elements
+        l += self._feeds.elements
         return l
