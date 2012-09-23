@@ -30,12 +30,7 @@ class MD(object):
     @property
     def elements(self):
         dataList = []
-        print "hello koker"
         for root, dirnames, filenames in walk(self._source):
-            print "hello koker2"
-            print dirnames
-            print filenames
-            print root
             for filename in fnmatch.filter(filenames, '*.md'):
                 l = root.split('_')
 
