@@ -1,14 +1,22 @@
-#container {
-    margin: auto;
-    width: 65%;
-    border-radius: 15px;
+#html_container {
+
     background-color: white;
 }
 
-#post_info, #post_content {
+#md_container {
+    background-color: #F0E68C;
+}
+
+#post_info, #html_content, #md_content {
     font-weight: bold;
 }
 
-#post_content {
+#html_content, #md_content {
     font-size:30px;
+}
+
+.common_background {
+    margin: auto;
+    width: 65%;
+    border-radius: 15px;
 }

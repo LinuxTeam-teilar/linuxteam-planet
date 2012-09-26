@@ -3,19 +3,24 @@
 {% block posts %}
 
     {% for post in posts %}
-        <div id="container">
-            <p id="post_info">
-                {{ post.author }}
-                <br/>
-                {{ post.date }}
-            <p/>
+        {% if post.isInternalPost%}
+            <div id="md_container" class="common_background">
+        {% else %}
+            <div id="container" class="common_background">
+        {% endif %}
+
             {% autoescape off %}
+                <p id="post_info">
+                    {{ post.author }}
+                    <br/>
+                    {{ post.date }}
+                <p/>
                 {% if post.isInternalPost%}
-                    <span id="post_content">
+                    <span id="md_content">
                         {{ post.content }}
                     <span/>
                 {% else %}
-                    <p id="post_content">
+                    <p id="html_content">
                         {{ post.title }}
                         {{ post.content }}
                     <p/>
