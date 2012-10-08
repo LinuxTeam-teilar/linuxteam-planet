@@ -40,4 +40,3 @@ class Posts(object):
         a = get_list(self._posts(), id)
         #print a
         return a
-        pass
