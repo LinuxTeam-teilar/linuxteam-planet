@@ -21,22 +21,25 @@ from md.md import MD
 
 class Posts(object):
     def __init__(self):
-        #self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
+        self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
+
+        #TODO
+        #I know its ugly. It will be replaced from models
+        self._get_list = lambda x,y:[x[i:i+y] for i in range(0,len(x),y)]
+
+    def home_posts(self):
+        return self._get_list(self._posts(), 5)
+
+    def id_posts(self, id):
+        a = self._get_list(self._posts(), id)
+        #print a
+        return a
 
     def _posts(self):
         l = self._markdown.elements
-        #l += self._feeds.elements
+        l += self._feeds.elements
 
         #sort the list according to the date
         sorted(l, key = lambda date: date)
         return l
-
-    def home_posts(self):
-        pass
-
-    def postsId(self, id):
-        get_list = lambda x,y:[x[i:i+y] for i in range(0,len(x),y)]
-        a = get_list(self._posts(), id)
-        #print a
-        return a

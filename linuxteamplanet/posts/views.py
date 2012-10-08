@@ -22,13 +22,13 @@ p = Posts()
 
 def home(request):
     return render_to_response('posts.html', {
-            "posts": p._posts(),
+            "posts": p.home_posts(),
             "next_url": "/index_1/"
             })
 
 def posts(resquest, post_id):
     tmp = int(post_id)
     return render_to_response('posts.html', {
-            "posts": p.postsId(tmp),
+            "posts": p.id_posts(tmp),
             "next_url": "/index_" + str(tmp + 1) + "/"
             })
