@@ -18,13 +18,17 @@
 from django.shortcuts import render_to_response
 from posts import Posts
 
+p = Posts()
+
 def home(request):
-    p = Posts()
-    p.url = "http://terietor.gr"
     return render_to_response('posts.html', {
             "posts": p._posts(),
-            "next_url": p.url
+            "next_url": "/index_1/"
             })
 
 def posts(resquest, post_id):
-    return render_to_response('posts.html', {})
+    tmp = int(post_id)
+    return render_to_response('posts.html', {
+            "posts": p.postsId(tmp),
+            "next_url": "/index_" + str(tmp + 1) + "/"
+            })

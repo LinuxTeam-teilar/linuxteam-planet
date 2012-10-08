@@ -21,13 +21,13 @@ from md.md import MD
 
 class Posts(object):
     def __init__(self):
-        self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
+        #self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
         self._url = ""
 
     def _posts(self):
         l = self._markdown.elements
-        l += self._feeds.elements
+        #l += self._feeds.elements
 
         #sort the list according to the date
         sorted(l, key = lambda date: date)
@@ -36,7 +36,11 @@ class Posts(object):
     def home_posts(self):
         pass
 
-    def posts_id(self, id):
+    def postsId(self, id):
+        get_list = lambda x,y:[x[i:i+y] for i in range(0,len(x),y)]
+        a = get_list(self._posts(), id)
+        #print a
+        return a
         pass
 
     @property
