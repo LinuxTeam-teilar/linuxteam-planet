@@ -1,6 +1,9 @@
-#html_container {
-
+#container {
     background-color: white;
+}
+
+#footer {
+    background-color:silver;
 }
 
 #md_container {
@@ -19,4 +22,8 @@
     margin: auto;
     width: 65%;
     border-radius: 15px;
+}
+
+#older_posts {
+    font-size:30px;
 }

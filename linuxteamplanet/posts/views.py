@@ -20,8 +20,10 @@ from posts import Posts
 
 def home(request):
     p = Posts()
+    p.url = "http://terietor.gr"
     return render_to_response('posts.html', {
-            "posts": p.posts()
+            "posts": p._posts(),
+            "next_url": p.url
             })
 
 def posts(resquest, post_id):

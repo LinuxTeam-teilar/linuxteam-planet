@@ -23,8 +23,26 @@ class Posts(object):
     def __init__(self):
         self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
+        self._url = ""
 
-    def posts(self):
+    def _posts(self):
         l = self._markdown.elements
         l += self._feeds.elements
+
+        #sort the list according to the date
+        sorted(l, key = lambda date: date)
         return l
+
+    def home_posts(self):
+        pass
+
+    def posts_id(self, id):
+        pass
+
+    @property
+    def url(self):
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        self._url = url
