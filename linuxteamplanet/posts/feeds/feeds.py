@@ -32,14 +32,15 @@ class Feeds(object):
     def elements(self):
         list = []
         blogs = self.json["Configs"]["feeds"]
+        #iterate in the feeds
         for blog in blogs:
             logger.debug(blog["source"])
             logger.debug(blog["author"] + '\n' + '\n')
             parser = feedparser.parse(blog["source"])
+            #iterate in the entries of the feed
             for entry in parser.entries:
-
+                #if there is no date it will become false!!!!
                 ok = True
-
                 date = None
 
                 try:
@@ -60,4 +61,12 @@ class Feeds(object):
                         "isInternalPost": False
                     }
                     list.append(data)
+                else:
+                    logger.debug("***************************************************")
+                    logger.debug("***************************************************")
+                    logger.debug("***************************************************")
+                    logger.debug("SOMETHING IS WRONG WITH THE FEED:" + blog["source"])
+                    logger.debug("***************************************************")
+                    logger.debug("***************************************************")
+                    logger.debug("***************************************************")
         return list
