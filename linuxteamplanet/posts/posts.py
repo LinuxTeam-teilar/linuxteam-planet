@@ -23,7 +23,6 @@ class Posts(object):
     def __init__(self):
         #self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
-        self._url = ""
 
     def _posts(self):
         l = self._markdown.elements
@@ -42,11 +41,3 @@ class Posts(object):
         #print a
         return a
         pass
-
-    @property
-    def url(self):
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        self._url = url
