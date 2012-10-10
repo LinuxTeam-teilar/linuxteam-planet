@@ -18,28 +18,32 @@
 from os import path
 from feeds.feeds import Feeds
 from md.md import MD
+from models import PostsModel
+from dateutil.parser import parse
 
 class Posts(object):
     def __init__(self):
         self._feeds = Feeds(path.join(path.dirname(path.realpath(__file__)) + '/../../configs', 'config.json'))
         self._markdown = MD("/opt/github/linuxteam-planet-sources/")
-
-        #TODO
-        #I know its ugly. It will be replaced from models
-        self._get_list = lambda x,y:[x[i:i+y] for i in range(0,len(x),y)]
+        self._populateDb()
 
     def home_posts(self):
-        return self._get_list(self._posts(), 5)
+        return PostsModel.object.order_by()[:5]
 
     def id_posts(self, id):
-        a = self._get_list(self._posts(), id)
-        #print a
-        return a
+        start = id * 5
+        end = start + 5
+        return PostsModel.object.order_by()[start:end]
 
-    def _posts(self):
+    def _populateDb(self):
         l = self._markdown.elements
         l += self._feeds.elements
 
-        #sort the list according to the date
-        sorted(l, key = lambda date: date)
-        return l
+        for it in l:
+            p = None
+            _date = parse(it["date"].split('+')[0])
+            try:
+                p = PostsModel(author = it["author"], title = it["title"], link = it["link"], content = it["content"], date = _date, isInternalPost = False)
+            except KeyError:
+                p = PostsModel(author = it["author"], title = 'aaaa', link = it["link"], content = it["content"], date = _date, isInternalPost = False)
+            p.save()

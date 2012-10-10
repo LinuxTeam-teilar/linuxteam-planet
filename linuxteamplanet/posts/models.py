@@ -18,4 +18,11 @@
 
 from django.db import models
 
-# Create your models here.
+class PostsModel(models.Model):
+    author = models.CharField(max_length = 200)
+    title = models.CharField(max_length = 200)
+    link = models.CharField(max_length = 1000)
+    content = models.CharField(max_length = 10000)
+    date = models.DateTimeField()
+    isInternalPost = models.BooleanField()
+    object = models.Manager()
