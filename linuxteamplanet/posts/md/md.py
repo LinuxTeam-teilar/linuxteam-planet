@@ -32,23 +32,24 @@ class MD(object):
         dataList = []
         for root, dirnames, filenames in walk(self._source):
             for filename in fnmatch.filter(filenames, '*.md'):
-                l = root.split('_')
+                for dirname in dirnames:
+                    l = dirname.split('_')
 
-                date = l[0]
-                post_id = l[1]
-                markdown_text = ''
-                with open(path.join(root, filename)) as f:
-                    markdown_text = f.read()
+                    date = l[0]
+                    post_id = l[1]
+                    markdown_text = ''
+                    with open(path.join(root, filename)) as f:
+                        markdown_text = f.read()
 
-                html = markdown.markdown(markdown_text)
-                data = {
-                    "author": 'LinuxTeam Teilar',
-                    "link": post_id,
-                    "content": html,
-                    "date": date,
-                    "isInternalPost": True
-                }
-                dataList.append(data)
+                    html = markdown.markdown(markdown_text)
+                    data = {
+                        "author": 'LinuxTeam Teilar',
+                        "link": post_id,
+                        "content": html,
+                        "date": date,
+                        "isInternalPost": True
+                    }
+                    dataList.append(data)
         return dataList
 
 
