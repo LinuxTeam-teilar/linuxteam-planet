@@ -16,6 +16,7 @@
 #  Boston, MA 02110-1301, USA.
 
 from django.shortcuts import render_to_response
+from django.http import Http404
 from posts import Posts
 
 p = Posts()
@@ -27,8 +28,23 @@ def home(request):
             })
 
 def posts(resquest, post_id):
+
     tmp = int(post_id)
+
+    #check if this page exists
+    post_list = p.id_posts(tmp)
+    if len(post_list) == 0:
+        raise Http404
+
+
+    #check if there is a next page
+    is_next_page = True
+    next_list = p.id_posts(tmp + 1)
+    if len(next_list) == 0:
+        is_next_page = False
+
     return render_to_response('posts.html', {
-            "posts": p.id_posts(tmp),
-            "next_url": "/index_" + str(tmp + 1) + "/"
+            "posts": post_list,
+            "next_url": "/index_" + str(tmp + 1) + "/",
+            "is_next_page": is_next_page
             })
